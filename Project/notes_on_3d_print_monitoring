@@ -1,0 +1,27 @@
+The resolution of the printer in an X-Y
+plane is a function of distance from apexes, so it changes with distance from the center of the build
+platform
+
+A computed camera pose in homogeneous coordinates allows the
+computation of a one-to-one relationship between the Euclidean world points ℝ𝑛
+recorded in the G-Code or in the STL model and the planar image points captured by the camera by applying
+projective transformations (Figure 2)
+
+Observing the printed layer through the camera lens, a slice of the
+material is viewed as a set of pixels, or a tuple of numbers, characterizing the local areas of the
+layer. Therefore, analyzing a two-dimensional image provides an understanding of the nature of
+the texture of the object.
+
+The proposed algorithm (Figure 7) for detecting printing failures assumes the presence of one
+camera located at an angle to the working surface of the 3-D printer. An angled camera allows us
+to observe both the active printable layer and part of the printing model from the side. Thus, one
+source frame can be divided into a virtual top view from above and a pseudo-view from the side.
+
+Such criteria as bed leveling, dimensionality lost, and non-circularity are dependent on a specific
+printer model and are manually calibrated by the user at the time of the first run. It is possible to
+create calibration tables to determine the correction factors for G-Code trajectories. However, at 
+11
+this stage, the above parameters are checked only for compliance/non-compliance with the
+specified values. In case of non-compliance in bed leveling, dimensionality, and circularity,
+printing is suspended. This method does not eliminate these errors during the printing process, but
+it saves time and material.
